@@ -11,19 +11,20 @@ public class FormularioDeAdicaoDeProdutoPage {
     }
 
     public FormularioDeAdicaoDeProdutoPage informarNomeDoProduto(String produtoNome){
-        navegador.findElement(By.id("produtonome")).sendKeys("produtoNome");
+        navegador.findElement(By.id("produtonome")).sendKeys(produtoNome);
         return this;
     }
 
     public FormularioDeAdicaoDeProdutoPage informarValorDoProduto(String produtoValor) {
-        navegador.findElement(By.name("produtovalor")).sendKeys("produtovalor");
+        navegador.findElement(By.name("produtovalor")).sendKeys(produtoValor);
         return this;
     }
 
-    public FormularioDeAdicaoDeProdutoPage informarCoresDoProduto(String produtocores){
-        navegador.findElement(By.id("produtocores")).sendKeys("produtocores");
+    public FormularioDeAdicaoDeProdutoPage informarCoresDoProduto(String produtoCores){
+        navegador.findElement(By.id("produtocores")).sendKeys(produtoCores);
         return this;
     }
+
     public ListaDeProdutosPage submeterFormularioDeAdicaoComErro(){
         navegador.findElement(By.cssSelector("button[type='submit']")).click();
         return new ListaDeProdutosPage(navegador);

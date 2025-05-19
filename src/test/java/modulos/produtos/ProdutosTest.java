@@ -35,7 +35,6 @@ public class ProdutosTest {
     @DisplayName("Nao e permitido regitrar um produto com valor igual a zero")
     public void testNaoEPermitoRegistrarProdutoComValorIgualAZero() {
 
-
         //Fazer o login
         String mensagemToastApresentada = new LoginPage(navegador)
                 .informarOUsuario("admin")
@@ -43,7 +42,7 @@ public class ProdutosTest {
                 .submeterFormularioDeLogin()
                 //Vou para a tela de registro de produto
                 .acessarFormularioDeAdicaoNovoProduto()
-                //Vou preencher dados do produto e o valor sera igual a zero
+                 //Vou preencher dados do produto e o valor sera igual a zero
                 .informarNomeDoProduto("Mouse sem fio")
                 .informarValorDoProduto("000")
                 .informarCoresDoProduto("branco, cinza, preto")
@@ -55,6 +54,79 @@ public class ProdutosTest {
         //Validar a mensagem que foi enviada para o Toast
         Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemToastApresentada);
     }
+
+    @Test
+    @DisplayName("Nao permitir registrar produto maior que R$7000")
+    public void testNaoPermitirRegistrarProdutoMaiorQueR$7000(){
+
+        //Fazer o login
+        String mensagemToastApresentada = new LoginPage(navegador)
+                .informarOUsuario("admin")
+                .informarASenha("admin")
+                .submeterFormularioDeLogin()
+                //Vou para a tela de registro de produto
+                .acessarFormularioDeAdicaoNovoProduto()
+                //Vou preencher dados do produto e o valor sera igual a zero
+                .informarNomeDoProduto("Xbox")
+                .informarValorDoProduto("700001")
+                .informarCoresDoProduto("branco, preto")
+                //Preenchimento do fomulario
+                .submeterFormularioDeAdicaoComErro()
+                //Validar mensagem
+                .capturarMensagemApresentada();
+
+        //Validar a mensagem que foi enviada para o Toast
+        Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemToastApresentada);
+    }
+
+@Test
+@DisplayName("Permitir registrar produto a partir de R$0.01")
+public void testPermitirRegistrarProdutoAPartirDeR$001(){
+    //Fazer o login
+    String mensagemToastApresentada = new LoginPage(navegador)
+            .informarOUsuario("admin")
+            .informarASenha("admin")
+            .submeterFormularioDeLogin()
+            //Vou para a tela de registro de produto
+            .acessarFormularioDeAdicaoNovoProduto()
+            //Vou preencher dados do produto e o valor sera igual a zero
+            .informarNomeDoProduto("mouse esfera")
+            .informarValorDoProduto("001")
+            .informarCoresDoProduto("branco, preto")
+            //Preenchimento do fomulario
+            .submeterFormularioDeAdicaoComErro()
+            //Validar mensagem
+            .capturarMensagemApresentada();
+
+    //Validar a mensagem que foi enviada para o Toast
+    Assertions.assertEquals("Produto adicionado com sucesso", mensagemToastApresentada);
+}
+
+
+@Test
+@DisplayName("Permitir registrar produto no limite maximo de R$7000")
+public void testPermitirRegistrarProdutoNoLimiteMaximoDeR$7000(){
+    //Fazer o login
+    String mensagemToastApresentada = new LoginPage(navegador)
+            .informarOUsuario("admin")
+            .informarASenha("admin")
+            .submeterFormularioDeLogin()
+            //Vou para a tela de registro de produto
+            .acessarFormularioDeAdicaoNovoProduto()
+            //Vou preencher dados do produto e o valor sera igual a zero
+            .informarNomeDoProduto("MacBook")
+            .informarValorDoProduto("7000")
+            .informarCoresDoProduto("branco, preto")
+            //Preenchimento do fomulario
+            .submeterFormularioDeAdicaoComErro()
+            //Validar mensagem
+            .capturarMensagemApresentada();
+
+    //Validar a mensagem que foi enviada para o Toast
+    Assertions.assertEquals("Produto adicionado com sucesso", mensagemToastApresentada);
+}
+
+
 
     @AfterEach
     public void afterEach(){
