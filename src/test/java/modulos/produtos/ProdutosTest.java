@@ -114,8 +114,8 @@ public void testPermitirRegistrarProdutoNoLimiteMaximoDeR$7000(){
             //Vou para a tela de registro de produto
             .acessarFormularioDeAdicaoNovoProduto()
             //Vou preencher dados do produto e o valor sera igual a zero
-            .informarNomeDoProduto("MacBook")
-            .informarValorDoProduto("7000")
+            .informarNomeDoProduto("MacBook Pro")
+            .informarValorDoProduto("700000")
             .informarCoresDoProduto("branco, preto")
             //Preenchimento do fomulario
             .submeterFormularioDeAdicaoComErro()
@@ -126,7 +126,29 @@ public void testPermitirRegistrarProdutoNoLimiteMaximoDeR$7000(){
     Assertions.assertEquals("Produto adicionado com sucesso", mensagemToastApresentada);
 }
 
+@Test
+@DisplayName("Permitir alterar produto e registrar componente ")
+public void testPermitirEditarProdutoERegistrarComponente(){
+//Fazer o login
+    String mensagemToastApresentada = new LoginPage(navegador)
+            .informarOUsuario("admin")
+            .informarASenha("admin")
+            .submeterFormularioDeLogin()
+            //Acessar produto da lista para edição
+            .acessarFormularioDeEdicaoNovoProduto("Iphone")
+            //Na tela de Edição alterar os campos desejados
+            .informarEditarNomeDoProduto("Mouse com fio")
+            .informarEditarValorDoProduto("3000")
+            .informarEditarCoresDoProduto("roxo")
+            //Preenchimento do Formulario
+            .submeterFormularioDeAdicaoComErro()
+            //Validar mensagem
+            .capturarMensagemApresentada();
 
+
+    //Validar a mensagem que foi enviada para o Toast
+    Assertions.assertEquals("Produto alterado com sucesso", mensagemToastApresentada);
+}
 
     @AfterEach
     public void afterEach(){
