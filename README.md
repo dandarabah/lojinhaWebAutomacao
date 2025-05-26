@@ -48,6 +48,40 @@ Selecionar a versão desejada e copiar o código.<br>
 :red_circle: Para outros navegadores fazer os mesmos passos.<br></br>
 Prontinho!!
 
-
-
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<br><b>Alterar os campos para os testes! :computer:</b></br>
+
+```
+@DisplayName("Permitir registrar produto a partir de R$0.01")	
+            .informarNomeDoProduto("mouse esfera")
+            .informarCoresDoProduto("branco, preto")
+```
+<br></br>
+
+```
+@DisplayName("Permitir registrar produto no limite maximo de R$7000")
+            .informarNomeDoProduto("MacBook Pro")
+            .informarCoresDoProduto("branco, preto")
+```
+<br></br>
+
+```
+@DisplayName("Permitir alterar produto")
+            .acessarFormularioDeEdicaoNovoProduto("Iphone")<br>
+            //Na tela de Edição alterar os campos desejados
+            .informarEditarNomeDoProduto("Mouse com fio")
+            .informarEditarValorDoProduto("3000")
+            .informarEditarCoresDoProduto("roxo")
+```
+<br></br>
+
+```
+@DisplayName("Permitir alterar produto e registrar componente")
+             //Acessar produto da lista para edição
+            .acessarFormularioDeEdicaoNovoProduto("Iphone")
+            //Na tela de Edição alterar os campos desejados
+            .informarEditarNomeDoProduto("Mouse com fio")
+            .informarEditarValorDoProduto("3000")
+            .informarEditarCoresDoProduto("roxo")
+```
+<br></br>
