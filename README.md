@@ -50,7 +50,7 @@ Prontinho!!
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <br><b>Alterar os campos para os testes! :computer:</b></br>
-
+<br></br>
 ```
 @DisplayName("Permitir registrar produto a partir de R$0.01")	
             .informarNomeDoProduto("mouse esfera")
