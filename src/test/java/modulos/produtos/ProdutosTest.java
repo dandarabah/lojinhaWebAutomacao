@@ -191,8 +191,8 @@ import java.time.Duration;
 
         //Fazer o login
         String mensagemToastApresentada = new LoginPage(navegador)
-                .informarOUsuario("dandaramoraesptqs")
-                .informarASenha("123456")
+                .informarOUsuario("admin")
+                .informarASenha("admin")
                 .submeterFormularioDeLogin()
                 //Acessar produto da lista para edição
                .acessarFormularioDeEdicaoNovoProduto("Caixa Organizadora").toString();
