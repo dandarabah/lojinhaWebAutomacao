@@ -29,8 +29,19 @@ public class FormularioDeEditarProdutoPage {
         return this;
     }
 
-    public ListaDeProdutosPage submeterFormularioDeAdicaoComErro(){
-        navegador.findElement(By.cssSelector("button[type='submit']")).click();
+    public FormularioAdicionarComponentePage acessarFormularioAdicionarNovoComponenteProduto(){
+        navegador.findElement(By.cssSelector("body > div:nth-child(3) > div > div > div.col.m7.s12 > div:nth-child(2) > a")).click();
+        return new FormularioAdicionarComponentePage(navegador);
+    }
+
+    public FormularioDeEditarProdutoPage submeterFormularioEdicao(){
+        navegador.findElement(By.xpath("/html/body/script[5]")).click();
+        return this;
+    }
+
+    public ListaDeProdutosPage submeterListaDeProdutoEditada(){
+        navegador.findElement(By.cssSelector("button[name='action']")).click();
         return new ListaDeProdutosPage(navegador);
     }
+
 }
