@@ -76,12 +76,34 @@ Prontinho!!
 <br></br>
 
 ```
-@DisplayName("Permitir alterar produto e registrar componente")
-             //Acessar produto da lista para edição
-            .acessarFormularioDeEdicaoNovoProduto("Iphone")
-            //Na tela de Edição alterar os campos desejados
-            .informarEditarNomeDoProduto("Mouse com fio")
-            .informarEditarValorDoProduto("3000")
-            .informarEditarCoresDoProduto("roxo")
+@DisplayName("Permitir editar produto")
+                 //Acessar produto da lista para edição
+                .acessarFormularioDeEdicaoNovoProduto("SamSam")
+                //Na tela de Edição alterar os campos desejados
+                .informarEditarNomeDoProduto("Cabo SamSam")
+                .informarEditarValorDoProduto("4000")
+                .informarEditarCoresDoProduto("vermelho")
+```
+<br></br>
+
+```
+ @DisplayName("Permitir adicionar componente no produto")
+                 //Acessar produto da lista para edição
+                .acessarFormularioDeEdicaoNovoProduto("notebook lex")
+                //Adicionar Componente ao Produto
+                .acessarFormularioAdicionarNovoComponenteProduto()
+                .informarNomeDoComponenteProduto("carregador, capa de proteção")
+                .informarQuantidadeDeComponentesProduto("2")
+```
+<br></br>
+
+<br></br>
+
+```
+@DisplayName("Excluir um item da lista de produto")
+        .acessarFormularioDeEdicaoNovoProduto("Caixa Organizadora").toString();
+        //Remover produto da lista
+        RemoverProdutoDaListaPage removerProdutoDaListaPage =
+        listaDeProdutosPage.getRemoverProdutoDaLista().excluirUmProdutoDaLista("Caixa organizadora");
 ```
 <br></br>
